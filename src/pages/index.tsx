@@ -1,10 +1,30 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { GetStaticProps } from "next";
+import {getHomeData}  from '../utils/api'
 
-export default function Home() {
+const Home: NextPage = () => {
   return (
-    <div className="py-12 bg-white">
+    <div>
+
     </div>
   )
 }
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const data = await getHomeData()
+    return {
+      props: {
+        data,
+      },
+    };
+  }catch (error) {
+    console.log(error)
+    return {
+      notFound: true,
+      revalidate: true,
+    }
+  }
+}
+export default Home

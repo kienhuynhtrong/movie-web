@@ -1,7 +1,6 @@
 import axios from './axios'
 
 export const getHomeData: () => Promise<any> = async () => {
-  console.log('run in there')
   const HomeAPIRoutes: {
     [key: string]: { url: string; media_type: "tv" | "movie" };
   } = {
